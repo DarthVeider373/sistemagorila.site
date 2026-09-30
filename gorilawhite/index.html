@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Conteúdo educacional sobre criptomoedas, blockchain, segurança digital e gestão de riscos. Sem promessas de lucro ou recomendação individual de investimento." />
+  <meta name="robots" content="index,follow" />
+  <title>Crypto com Clareza | Educação sobre ativos digitais</title>
+  <style>
+    :root{
+      --bg:#f6f8fb; --card:#ffffff; --ink:#162033; --muted:#667085;
+      --line:#e5e9f0; --brand:#185adb; --brand2:#0b3c9d; --soft:#eaf1ff;
+      --good:#0b7a53; --warn:#8a5a00;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+    a{color:inherit}
+    .wrap{width:min(1120px,calc(100% - 36px));margin:auto}
+    header{background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+    nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:flex;gap:11px;align-items:center;font-weight:800;text-decoration:none}
+    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#5e8df0);display:grid;place-items:center;color:white;font-weight:900}
+    .navlinks{display:flex;gap:24px;align-items:center;color:#465166;font-size:14px}
+    .navlinks a{text-decoration:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:10px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;border:1px solid var(--brand)}
+    .btn:hover{background:var(--brand2)}
+    .btn.secondary{background:#fff;color:var(--brand);border-color:#c8d7f7}
+    .hero{padding:84px 0 62px;background:radial-gradient(circle at 80% 20%,#dfe9ff 0,transparent 33%),linear-gradient(#fff,var(--bg))}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:var(--soft);color:var(--brand2);padding:7px 11px;border-radius:999px;font-size:13px;font-weight:800}
+    h1{font-size:clamp(40px,6vw,68px);line-height:1.03;letter-spacing:-.045em;margin:18px 0 20px}
+    .lead{font-size:19px;color:var(--muted);max-width:710px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 20px}
+    .micro{font-size:13px;color:#7a8497}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:25px;box-shadow:0 20px 55px rgba(26,53,98,.08)}
+    .panel h3{margin-top:0}
+    .metric{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+    .metric:last-child{border-bottom:0}
+    .icon{width:42px;height:42px;border-radius:12px;background:var(--soft);display:grid;place-items:center;flex:none}
+    section{padding:72px 0}
+    .section-head{max-width:730px;margin-bottom:30px}
+    .eyebrow{font-size:13px;font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.12em}
+    h2{font-size:clamp(30px,4vw,44px);line-height:1.1;letter-spacing:-.03em;margin:8px 0 12px}
+    .muted{color:var(--muted)}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:23px}
+    .card h3{margin:10px 0 8px;font-size:18px}
+    .num{font-size:13px;font-weight:900;color:var(--brand)}
+    .risk{background:#101828;color:white}
+    .risk .muted{color:#c5ccda}
+    .risk .card{background:#182230;border-color:#2d394a;color:white}
+    .risk .card p{color:#c5ccda}
+    .check{display:flex;gap:12px;margin:13px 0}
+    .check b{color:#fff}
+    .learn{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .lesson{display:flex;gap:14px;background:#fff;border:1px solid var(--line);padding:20px;border-radius:14px}
+    .lesson span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--soft);color:var(--brand);font-weight:900;flex:none}
+    .notice{background:#fff8e7;border:1px solid #f0d996;border-radius:14px;padding:18px;color:#6f5000}
+    .cta{background:linear-gradient(135deg,#123f9c,#1b64df);border-radius:24px;color:white;padding:44px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .cta h2{margin-top:0}
+    .cta p{color:#dfe8fb;max-width:640px}
+    .cta .btn{background:white;color:#164da9;border-color:white}
+    footer{padding:44px 0 50px;color:#697386;font-size:13px}
+    .footergrid{display:grid;grid-template-columns:1fr auto;gap:30px;border-top:1px solid var(--line);padding-top:28px}
+    .footerlinks{display:flex;gap:18px;flex-wrap:wrap}
+    .footerlinks a{text-decoration:none}
+    @media(max-width:800px){
+      .navlinks a:not(.btn){display:none}
+      .hero{padding-top:56px}
+      .hero-grid,.learn{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .cta{display:block;padding:30px}
+      .cta .btn{margin-top:8px}
+      .footergrid{grid-template-columns:1fr}
+    }
+  
+    .modal-backdrop{
+      position:fixed; inset:0; background:rgba(10,18,32,.62); display:none;
+      align-items:center; justify-content:center; padding:20px; z-index:1000;
+    }
+    .modal-backdrop.open{display:flex}
+    .modal{
+      width:min(760px,100%); max-height:86vh; overflow:auto; background:#fff;
+      border-radius:18px; border:1px solid var(--line); box-shadow:0 30px 80px rgba(0,0,0,.22);
+    }
+    .modal-head{
+      position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line);
+      padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:20px;
+    }
+    .modal-head h3{margin:0;font-size:22px}
+    .modal-close{
+      border:0; background:#f0f3f8; width:38px; height:38px; border-radius:10px;
+      cursor:pointer; font-size:22px; color:#344054;
+    }
+    .modal-body{padding:22px}
+    .modal-body h4{margin:24px 0 8px}
+    .modal-body p,.modal-body li{color:#596579}
+    .modal-body ul{padding-left:20px}
+
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav aria-label="Navegação principal">
+      <a class="brand" href="#inicio"><span class="logo">C</span> Crypto com Clareza</a>
+      <div class="navlinks">
+        <a href="#fundamentos">Fundamentos</a>
+        <a href="#riscos">Riscos</a>
+        <a href="#seguranca">Segurança</a>
+        <a class="btn" href="#guia">Começar a aprender</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill">Conteúdo educacional • linguagem simples</span>
+        <h1>Entenda cripto antes de tomar decisões financeiras.</h1>
+        <p class="lead">Aprenda os fundamentos de Bitcoin, blockchain, carteiras digitais, volatilidade e segurança. Sem promessas de lucro, sem “fórmulas secretas” e sem pressão para investir.</p>
+        <div class="actions">
+          <a class="btn" href="#guia">Ver guia introdutório</a>
+          <a class="btn secondary" href="#riscos">Conhecer os riscos</a>
+        </div>
+        <p class="micro">Material informativo. Não constitui recomendação de investimento, consultoria financeira ou promessa de resultado.</p>
+      </div>
+      <aside class="panel" aria-label="Princípios do conteúdo">
+        <h3>Antes de falar em retorno, falamos em compreensão.</h3>
+        <div class="metric"><div class="icon">01</div><div><strong>Fundamentos primeiro</strong><br><span class="muted">O que são ativos digitais e como a tecnologia funciona.</span></div></div>
+        <div class="metric"><div class="icon">02</div><div><strong>Risco de forma clara</strong><br><span class="muted">Preços podem subir ou cair rapidamente e perdas são possíveis.</span></div></div>
+        <div class="metric"><div class="icon">03</div><div><strong>Segurança prática</strong><br><span class="muted">Cuidados com golpes, senhas, chaves privadas e plataformas.</span></div></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="fundamentos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Fundamentos</div>
+        <h2>Comece pelo que realmente importa.</h2>
+        <p class="muted">Criptoativos são um tema financeiro e tecnológico complexo. O objetivo deste material é ajudar você a compreender conceitos básicos antes de considerar qualquer decisão.</p>
+      </div>
+      <div class="grid3">
+        <article class="card"><div class="num">01</div><h3>Blockchain</h3><p class="muted">Entenda, em termos simples, como registros distribuídos funcionam e por que diferentes redes possuem características próprias.</p></article>
+        <article class="card"><div class="num">02</div><h3>Bitcoin e outros ativos</h3><p class="muted">Conheça diferenças entre projetos, utilidades, oferta, liquidez e os fatores que podem afetar preços.</p></article>
+        <article class="card"><div class="num">03</div><h3>Custódia e carteiras</h3><p class="muted">Veja a diferença entre manter ativos em uma plataforma e utilizar uma carteira sob sua própria responsabilidade.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="risk" id="riscos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" style="color:#9fc0ff">Riscos</div>
+        <h2>Cripto envolve risco real.</h2>
+        <p class="muted">Nenhum conteúdo responsável deveria esconder isso. Ativos digitais podem ter alta volatilidade e não existe garantia de valorização, renda ou recuperação do capital.</p>
+      </div>
+      <div class="grid3">
+        <article class="card"><h3>Volatilidade</h3><p>Oscilações expressivas podem acontecer em períodos curtos, inclusive com perdas relevantes.</p></article>
+        <article class="card"><h3>Risco operacional</h3><p>Erros de envio, perda de credenciais e falhas de segurança podem causar perdas difíceis ou impossíveis de reverter.</p></article>
+        <article class="card"><h3>Golpes e fraudes</h3><p>Desconfie de rentabilidade garantida, pressão para depositar rapidamente, “robôs infalíveis” e pedidos de chave privada.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="seguranca">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Segurança digital</div>
+        <h2>Proteção faz parte do aprendizado.</h2>
+      </div>
+      <div class="learn">
+        <div class="card">
+          <div class="check"><span>✓</span><div><b>Use autenticação em dois fatores</b><br><span class="muted">Adicione uma camada extra de segurança às suas contas.</span></div></div>
+          <div class="check"><span>✓</span><div><b>Confirme endereços e domínios</b><br><span class="muted">Sites falsos podem imitar plataformas conhecidas.</span></div></div>
+          <div class="check"><span>✓</span><div><b>Nunca compartilhe sua chave privada</b><br><span class="muted">Quem possui a chave pode controlar os ativos associados a ela.</span></div></div>
+        </div>
+        <div class="notice">
+          <strong>Sinal de alerta:</strong>
+          <p>Evite ofertas que prometam retorno certo, lucro diário fixo, dinheiro rápido, acesso exclusivo a uma oportunidade “sem risco” ou ganhos condicionados ao recrutamento de outras pessoas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guia">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Guia introdutório</div>
+        <h2>Uma trilha simples para estudar o tema.</h2>
+      </div>
+      <div class="learn">
+        <div class="lesson"><span>1</span><div><strong>Conceitos essenciais</strong><div class="muted">Blockchain, tokens, redes e transações.</div></div></div>
+        <div class="lesson"><span>2</span><div><strong>Como preços se formam</strong><div class="muted">Oferta, demanda, liquidez e volatilidade.</div></div></div>
+        <div class="lesson"><span>3</span><div><strong>Segurança e autocustódia</strong><div class="muted">Carteiras, backups, golpes e boas práticas.</div></div></div>
+        <div class="lesson"><span>4</span><div><strong>Gestão de risco</strong><div class="muted">Por que evitar decisões impulsivas e exposição que você não compreende.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Informação antes da decisão.</h2>
+          <p>Continue estudando com fontes confiáveis, compare informações e considere sua realidade financeira e sua tolerância a risco. Este site não solicita depósitos e não opera investimentos.</p>
+        </div>
+        <a class="btn" href="#fundamentos">Rever fundamentos</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footergrid">
+    <div>
+      <strong>Crypto com Clareza</strong>
+      <p>Conteúdo exclusivamente educacional. Criptoativos são voláteis e podem resultar em perda parcial ou total do capital. Nada neste site constitui recomendação individual de compra, venda ou manutenção de qualquer ativo.</p>
+      <p>© 2026 Crypto com Clareza. Exemplo demonstrativo — substitua razão social, CNPJ, contatos e documentos legais pelos dados reais antes da publicação.</p>
+
+      <p style="margin-top:18px;padding-top:18px;border-top:1px solid #e5e9f0;">
+        <strong>Aviso sobre Meta, Facebook e Instagram:</strong>
+        este site é independente e não é afiliado, patrocinado, administrado, aprovado ou endossado pela Meta Platforms, Inc., Facebook ou Instagram.
+        A Meta, o Facebook e o Instagram não possuem responsabilidade sobre o conteúdo, informações, produtos, serviços, ofertas, decisões, transações ou resultados relacionados a este site.
+        Quaisquer nomes, marcas ou referências a essas plataformas pertencem aos seus respectivos titulares.
+      </p>
+    </div>
+    <div class="footerlinks">
+      <a href="#" data-open-modal="privacyModal">Política de Privacidade</a>
+      <a href="#" data-open-modal="termsModal">Termos de Uso</a>
+      <a href="mailto:contato@seudominio.com">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-backdrop" id="privacyModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <div class="modal-head">
+      <h3 id="privacyTitle">Política de Privacidade</h3>
+      <button class="modal-close" type="button" aria-label="Fechar" data-close-modal>&times;</button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Última atualização:</strong> setembro de 2026.</p>
+      <p>Esta Política de Privacidade explica, de forma geral, como as informações podem ser tratadas durante a navegação neste site.</p>
+
+      <h4>1. Informações coletadas</h4>
+      <p>Podemos coletar informações fornecidas voluntariamente pelo visitante, como nome, e-mail ou outras informações enviadas por formulários. Também podem ser registrados dados técnicos básicos de navegação, como tipo de dispositivo, navegador, páginas acessadas e endereço IP, quando necessário para segurança, funcionamento e análise do site.</p>
+
+      <h4>2. Finalidade do uso</h4>
+      <p>As informações poderão ser utilizadas para responder solicitações, melhorar a experiência do usuário, manter a segurança do site, enviar comunicações autorizadas e cumprir obrigações legais ou regulatórias.</p>
+
+      <h4>3. Cookies e tecnologias semelhantes</h4>
+      <p>Este site pode utilizar cookies ou tecnologias semelhantes para funcionalidades essenciais, medição de desempenho e, quando aplicável, análise de campanhas. O visitante pode ajustar permissões de cookies pelo navegador ou pelas ferramentas disponibilizadas no próprio site.</p>
+
+      <h4>4. Compartilhamento de dados</h4>
+      <p>Não vendemos dados pessoais. Informações poderão ser compartilhadas com prestadores de serviço estritamente necessários à operação do site, sempre dentro dos limites legais aplicáveis, ou quando exigido por autoridade competente.</p>
+
+      <h4>5. Segurança</h4>
+      <p>Adotamos medidas razoáveis de segurança para proteger informações contra acesso, alteração, divulgação ou destruição não autorizados. Nenhum sistema, entretanto, pode ser considerado totalmente imune a riscos.</p>
+
+      <h4>6. Direitos do titular</h4>
+      <p>O titular poderá solicitar, conforme a legislação aplicável, acesso, correção, atualização ou exclusão de seus dados, bem como esclarecimentos sobre seu tratamento.</p>
+
+      <h4>7. Conteúdo educacional</h4>
+      <p>O conteúdo deste site possui finalidade educacional e informativa. Não constitui recomendação individual de investimento, promessa de lucro ou garantia de resultado financeiro.</p>
+
+      <h4>8. Contato</h4>
+      <p>Para questões relacionadas à privacidade, utilize o canal de contato disponibilizado neste site.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="termsModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+    <div class="modal-head">
+      <h3 id="termsTitle">Termos de Uso</h3>
+      <button class="modal-close" type="button" aria-label="Fechar" data-close-modal>&times;</button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Última atualização:</strong> setembro de 2026.</p>
+      <p>Ao acessar este site, o visitante declara estar ciente destes Termos de Uso.</p>
+
+      <h4>1. Finalidade do site</h4>
+      <p>Este site apresenta conteúdo educacional sobre criptoativos, blockchain, segurança digital e temas relacionados. O material é informativo e não substitui orientação financeira, jurídica, tributária ou profissional individualizada.</p>
+
+      <h4>2. Ausência de garantia</h4>
+      <p>Não há promessa ou garantia de lucro, valorização, renda, rentabilidade ou recuperação de capital. Criptoativos podem apresentar elevada volatilidade e envolver perda parcial ou total dos valores envolvidos.</p>
+
+      <h4>3. Decisões do usuário</h4>
+      <p>Toda decisão financeira tomada pelo visitante é de sua exclusiva responsabilidade. Recomenda-se pesquisa independente, avaliação de riscos e, quando apropriado, consulta a profissional habilitado.</p>
+
+      <h4>4. Uso adequado</h4>
+      <p>O visitante concorda em utilizar este site de forma lícita, sem tentar comprometer sua segurança, funcionamento, infraestrutura ou conteúdo.</p>
+
+      <h4>5. Propriedade intelectual</h4>
+      <p>Textos, elementos visuais, estrutura, marca e demais conteúdos deste site não poderão ser reproduzidos ou utilizados comercialmente sem autorização, salvo quando permitido por lei.</p>
+
+      <h4>6. Links e terceiros</h4>
+      <p>O site poderá conter referências ou links para serviços de terceiros. Não controlamos suas práticas, disponibilidade, conteúdo ou políticas, e o acesso ocorre por conta e risco do usuário.</p>
+
+      <h4>7. Meta, Facebook e Instagram</h4>
+      <p>Este site é independente e não é afiliado, patrocinado, administrado, aprovado ou endossado pela Meta Platforms, Inc., Facebook ou Instagram. Essas empresas não possuem responsabilidade sobre o conteúdo, informações, serviços, ofertas ou resultados relacionados a este site.</p>
+
+      <h4>8. Alterações</h4>
+      <p>Estes Termos poderão ser atualizados periodicamente para refletir mudanças no site, em práticas operacionais ou em requisitos legais.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const openModal = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add('open');
+    el.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = (el) => {
+    el.classList.remove('open');
+    el.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  };
+
+  document.querySelectorAll('[data-open-modal]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      openModal(link.getAttribute('data-open-modal'));
+    });
+  });
+
+  document.querySelectorAll('[data-close-modal]').forEach(btn => {
+    btn.addEventListener('click', () => closeModal(btn.closest('.modal-backdrop')));
+  });
+
+  document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+    backdrop.addEventListener('click', e => {
+      if (e.target === backdrop) closeModal(backdrop);
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-backdrop.open').forEach(closeModal);
+    }
+  });
+</script>
+
+</body>
+</html>
